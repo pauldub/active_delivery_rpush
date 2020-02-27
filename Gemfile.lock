@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    active_delivery_rpush (0.1.0)
+    active_delivery_rpush (0.1.1)
       abstract_notifier (~> 0.2.0)
       active_delivery (~> 0.3.1)
       rpush (~> 5.0.0)
