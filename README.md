@@ -1,8 +1,7 @@
 # ActiveDeliveryRpush
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/active_delivery_rpush`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Provides an [ActiveDelivery](https://github.com/palkan/active_delivery/) line
+for [rpush](https://github.com/rpush/rpush/) notifications.
 
 ## Installation
 
@@ -22,7 +21,48 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Register the rpush line with your `ApplicationDelivery`:
+
+``` ruby
+class ApplicationDelivery < ActiveDelivery::Base
+  register_line :rpush, ActiveDeliveryRpush::Line
+end
+```
+
+The rpush line will resolves `Notification` suffixed classes, for example:
+`PostNotification`.
+
+You will need to setup your notification driver, depending on which provider you
+want to use:
+
+``` ruby
+class FcmNotification < ActiveDeliveryRpush::Notifier
+  # Use the active_delivery_rpush driver with GCM notifications
+  self.driver = ActiveDeliveryRpush::Driver.new(
+    Rpush::Gcm::Notification
+  )
+end
+```
+
+Finally, you can implement you notifications:
+
+``` ruby
+class PostNotification < FcmNotification
+  def created(post)
+    # Note: the `body` parameter is not required.
+    notification(
+      app: Rpush::Gcm::App.find_by(name: 'android'),
+      registration_ids: params[:user].devices.pluck(
+        :registration_id
+      ),
+      notification: {
+        title: "New post",
+        body: "#{post.title} has been published by #{post.author}!"
+      },
+    )
+  end
+end
+```
 
 ## Development
 
@@ -32,7 +72,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/active_delivery_rpush.
+Bug reports and pull requests are welcome on GitHub at https://github.com/pauldub/active_delivery_rpush.
 
 
 ## License
