@@ -28,5 +28,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.add_runtime_dependency 'rpush', '>= 5.0', '< 5.3'
   spec.add_runtime_dependency 'active_delivery', '~> 0.3.1'
-  spec.add_runtime_dependency 'abstract_notifier', '~> 0.2.0'
+  spec.add_runtime_dependency 'abstract_notifier', '>= 0.2', '< 0.4'
 end
