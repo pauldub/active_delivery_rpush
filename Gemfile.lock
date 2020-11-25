@@ -3,7 +3,7 @@ PATH
   specs:
     active_delivery_rpush (0.1.1)
       abstract_notifier (>= 0.2, < 0.4)
-      active_delivery (~> 0.3.1)
+      active_delivery (>= 0.3.1, < 0.5.0)
       rpush (>= 5.0, < 5.3)
 
 GEM
@@ -23,7 +23,7 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_delivery (0.3.1)
+    active_delivery (0.4.4)
     activesupport (6.0.3.4)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
