@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  spec.add_runtime_dependency 'rpush', '>= 5.0', '< 5.5'
+  spec.add_runtime_dependency 'rpush', '>= 5.0', '< 7.1'
   spec.add_runtime_dependency 'active_delivery', '>= 0.3.1', '< 0.5.0'
   spec.add_runtime_dependency 'abstract_notifier', '>= 0.2', '< 0.4'
 end
