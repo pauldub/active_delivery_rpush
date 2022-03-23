@@ -45,7 +45,7 @@ GEM
       nokogiri (>= 1.5.9)
     method_source (1.0.0)
     mini_portile2 (2.5.0)
-    minitest (5.14.4)
+    minitest (5.15.0)
     multi_json (1.15.0)
     net-http-persistent (4.0.1)
       connection_pool (~> 2.2)
@@ -94,7 +94,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_delivery_rpush!
-  minitest (~> 5.14)
+  minitest (~> 5.15)
   rake (~> 13.0)
 
 BUNDLED WITH
